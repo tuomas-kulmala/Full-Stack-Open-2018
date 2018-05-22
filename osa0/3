@@ -1,21 +1,14 @@
 kayttaja->selain:
 note left of selain
-kayttaja kirjoittaa uuden kommentin kenttaan 
-ja painaa Talleta-painiketta
+kayttaja klikkaa linkkiä muistiinpanot
 end note
-selain->palvelin: POST https://fullstack-exampleapp.herokuapp.com/new_note
-note left of palvelin
- käsitellään post-pyyntöön sisältynyt kommentti 
- ja lisätään se palvelimelle
-end note
-palvelin->selain: status 302
-note left of selain
- Selain hakee css ja js-tiedostot
- uudestaan palveimelta
-end note
-
 selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/notes
+note left of palvelin
+  muodostetaan HTML sivu, jossa on linkit 
+  js ja css tiedostoihin
+end note
 palvelin->selain: status 200, sivun HTML-koodi
+
 selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/main.css
 palvelin->selain: status 200, main.css
 selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/main.js
@@ -29,7 +22,7 @@ note left of selain
 end note
 
 selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/data.json
-palvelin->selain: status 200, data.json lisättynä uudella kommentilla
+palvelin->selain: status 200, data.json
 
 note left of selain
  selaimessa ajettava JavaScript lisää 
