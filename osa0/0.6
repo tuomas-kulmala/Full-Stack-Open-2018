@@ -1,0 +1,30 @@
+kayttaja->selain:
+note left of selain
+kayttaja kirjoittaa uuden kommentin kenttaan 
+ja painaa Talleta-painiketta.
+end note
+note left of selain
+Selaimessa suoritettava JavaScript xhttpForPost-koodi 
+käynnistyy, kun formissa tapahtuu submit
+end note
+selain->palvelin: POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+note left of palvelin
+ käsitellään post-pyyntöön sisältynyt kommentti 
+ ja lisätään se palvelimelle
+end note
+palvelin->selain: status 201
+
+
+note left of selain
+ selain suorittaa JavaScript-koodin, joka
+ tekee pyynnön palvelimelle data.json tiedoston
+ noutamiseksi
+end note
+
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: status 200, data.json lisättynä uudella kommentilla
+
+note left of selain
+ selaimessa ajettava JavaScript lisää 
+ json-tiedostossa olevat kommentit sivulle
+end note
