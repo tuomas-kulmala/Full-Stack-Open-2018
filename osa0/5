@@ -1,0 +1,34 @@
+kayttaja->selain:
+note left of selain
+ käyttäjä syöttää sivun osoitteen osoiteriville
+end note
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/spa
+note left of palvelin
+ muodostetaan HTML-sivu , jossa linkit css ja js-tiedostoihin
+end note
+palvelin->selain: status 200, sivun HTML-koodi
+
+note left of selain
+ selain lukee HTML-tiedoston ja 
+ hakee css ja js-tiedostot palvelimelta
+end note
+
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: status 200, main.css
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/spa.js
+palvelin->selain: status 200, spa.js
+
+note left of selain
+ selain muotoilee sivun css-tiedoston mukaisesti 
+ ja suorittaa JavaScript-tiedoston, joka
+ tekee pyynnön palvelimelle data.json tiedoston
+ noutamiseksi
+end note
+
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: status 200, data.json
+
+note left of selain
+ selaimessa ajettava JavaScript lisää 
+ json-tiedostossa olevat kommentit sivulle
+end note
